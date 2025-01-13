@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 int main() {
     pid_t pid;
@@ -12,7 +13,8 @@ int main() {
         printf("Child process: PID = %d, Parent PID = %d\n", getpid(), getppid());
     } 
     else {
-        sleep(1); 
+        int status;
+        wait(&status);
         printf("Parent process: PID = %d, Child PID = %d\n", getpid(), pid);
     }
     return 0;
