@@ -8,13 +8,13 @@ int main() {
     pid = fork();
     if (pid < 0) {
         perror("Fork failed");
-        exit(EXIT_FAILURE);
+        exit(-1);
     } 
     else if (pid == 0) {
         printf("Child process: PID = %d, Parent PID = %d\n", getpid(), getppid());
         execl("./ADD", "ADD", "10", "20", NULL);
         perror("exec failed");
-        exit(EXIT_FAILURE);
+        exit(-1);
     } 
     else {
         int status;
