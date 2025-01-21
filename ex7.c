@@ -19,7 +19,7 @@ int main() {
     else {
         int status;
         waitpid(pid, &status, 0);
-        printf("Parent process: PID = %d, Child PID = %d\n", getpid(), pid);
+        printf("Child process completed");
     }
     return 0;
 }
