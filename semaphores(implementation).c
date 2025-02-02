@@ -28,7 +28,6 @@ int main() {
     
     pid_t pid = fork();
     if (pid < 0) {
-        perror("fork failed");
         exit(1);
     }
     
