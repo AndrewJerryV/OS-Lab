@@ -20,7 +20,6 @@ void semaphore_signal(semaphore *s) {
 int main() {
     semaphore *sem = mmap(NULL, sizeof(semaphore), PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
     if (sem == MAP_FAILED) {
-        perror("mmap failed");
         exit(1);
     }
     
