@@ -4,7 +4,7 @@
 #include <sys/mman.h>
 #include <sys/wait.h>
 
-#define BUFFER_SIZE 5
+#define BUFFER_SIZE 10
 #define wait(s) while (s <= 0); s--
 #define signal(s) s++
 
