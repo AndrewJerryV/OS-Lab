@@ -47,9 +47,8 @@ int main() {
 
     printf("Need Matrix:\n");
     for (int i = 0; i < numProcesses; i++) {
-        for (int j = 0; j < numResources; j++) {
+        for (int j = 0; j < numResources; j++) 
             printf("%d ", need[i][j]);
-        }
         printf("\n");
     }
     printf("\n");
@@ -81,15 +80,13 @@ int main() {
 
                 if (canAllocate) {
 
-                    for (int j = 0; j < numResources; j++) {
+                    for (int j = 0; j < numResources; j++) 
                         work[j] += allocation[i][j];
-                    }
                     safeSequence[count++] = i;
                     finish[i] = true;
                     printf("Process P%d has finished. New work: ", i);
-                    for (int j = 0; j < numResources; j++) {
+                    for (int j = 0; j < numResources; j++) 
                         printf("%d ", work[j]);
-                    }
                     printf("\n");
                     found = true;
                 }
