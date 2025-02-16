@@ -9,11 +9,8 @@ int main() {
     printf("Enter the number of resources: ");
     scanf("%d", &numResources);
 
-    int available[numResources];
-    int maximum[numProcesses][numResources];
-    int allocation[numProcesses][numResources];
-    int need[numProcesses][numResources];
-
+    int available[numResources], maximum[numProcesses][numResources], allocation[numProcesses][numResources], need[numProcesses][numResources];
+    
     printf("\nEnter the available units for each of the %d resources:\n", numResources);
     for (int j = 0; j < numResources; j++) {
         printf("Resource %d: ", j);
@@ -24,18 +21,16 @@ int main() {
     printf("Enter the maximum matrix for %d processes and %d resources:\n", numProcesses, numResources);
     for (int i = 0; i < numProcesses; i++) {
         printf("Process P%d (enter %d numbers): ", i, numResources);
-        for (int j = 0; j < numResources; j++) {
+        for (int j = 0; j < numResources; j++) 
             scanf("%d", &maximum[i][j]);
-        }
     }
     printf("\n");
 
     printf("Enter the allocation matrix for %d processes and %d resources:\n", numProcesses, numResources);
     for (int i = 0; i < numProcesses; i++) {
         printf("Process P%d (enter %d numbers): ", i, numResources);
-        for (int j = 0; j < numResources; j++) {
+        for (int j = 0; j < numResources; j++) 
             scanf("%d", &allocation[i][j]);
-        }
     }
     printf("\n");
 
@@ -60,9 +55,8 @@ int main() {
     int safeSequence[numProcesses];
     int work[numResources];
 
-    for (int j = 0; j < numResources; j++) {
+    for (int j = 0; j < numResources; j++) 
         work[j] = available[j];
-    }
 
     int count = 0;
 
@@ -79,7 +73,6 @@ int main() {
                 }
 
                 if (canAllocate) {
-
                     for (int j = 0; j < numResources; j++) 
                         work[j] += allocation[i][j];
                     safeSequence[count++] = i;
@@ -92,9 +85,8 @@ int main() {
                 }
             }
         }
-        if (!found) {
+        if (!found) 
             break; 
-        }
     }
 
     if (count == numProcesses) {
