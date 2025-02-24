@@ -35,9 +35,8 @@ int main() {
     printf("\n");
 
     for (int i = 0; i < numProcesses; i++) {
-        for (int j = 0; j < numResources; j++) {
+        for (int j = 0; j < numResources; j++) 
             need[i][j] = maximum[i][j] - allocation[i][j];
-        }
     }
 
     printf("Need Matrix:\n");
@@ -49,14 +48,10 @@ int main() {
     printf("\n");
 
     bool finish[numProcesses];
-    for (int i = 0; i < numProcesses; i++) {
-        finish[i] = false;
-    }
-    int safeSequence[numProcesses];
-    int work[numResources];
-
-    for (int j = 0; j < numResources; j++) 
-        work[j] = available[j];
+    int work[numResources], safeSequence[numProcesses], count = 0;
+    
+    for (int j = 0; j < numResources; j++) work[j] = available[j];
+    for (int i = 0; i < numProcesses; i++) finish[i] = false;
 
     int count = 0;
 
@@ -98,6 +93,5 @@ int main() {
     } else {
         printf("\nSystem is in an UNSAFE state! No safe sequence exists.\n");
     }
-
     return 0;
 }
