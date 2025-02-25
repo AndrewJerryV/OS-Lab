@@ -110,16 +110,17 @@ int main() {
     int processSize[n];
 
     printf("Enter the size of each process: ");
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) 
         scanf("%d", &processSize[i]);
-    }
 
     firstFit(blockSize, m, processSize, n);
 
-    for (int i = 0; i < m; i++) blockSize[i] = blockSizeCopy[i]; 
+    for (int i = 0; i < m; i++) 
+        blockSize[i] = blockSizeCopy[i]; 
     bestFit(blockSize, m, processSize, n);
 
-    for (int i = 0; i < m; i++) blockSize[i] = blockSizeCopy[i]; 
+    for (int i = 0; i < m; i++) 
+        blockSize[i] = blockSizeCopy[i]; 
     worstFit(blockSize, m, processSize, n);
 
     return 0;
