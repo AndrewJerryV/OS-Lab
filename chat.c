@@ -63,9 +63,8 @@ int main() {
                 fflush(stdout);
             }
     
-            if (strcmp(message, "STOP") == 0) {
+            if (strcmp(message, "STOP") == 0) 
                 sharedBuffer->exitRequest = 1;
-            }
         }
     
         if (sharedBuffer->exitRequest) {
