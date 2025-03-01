@@ -36,22 +36,20 @@ int main() {
 
     sem_init(&room, 0, N - 1);
 
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++) 
         pthread_mutex_init(&forks[i], NULL);
-    }
 
     for (int i = 0; i < N; i++) {
         philosopher_ids[i] = i;
         pthread_create(&threads[i], NULL, philosopher, &philosopher_ids[i]);
     }
 
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++) 
         pthread_join(threads[i], NULL);
-    }
 
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++) 
         pthread_mutex_destroy(&forks[i]);
-    }
+
     sem_destroy(&room);
 
     return 0;
