@@ -6,12 +6,10 @@
 int main() {
     pid_t pid;
     pid = fork();
-    if (pid < 0) {
+    if (pid < 0) 
         printf("Fork failed");
-    } 
-    else if (pid == 0) {
+    else if (pid == 0) 
         printf("Child process: PID = %d, Parent PID = %d\n", getpid(), getppid());
-    } 
     else {
         int status;
         wait(&status);
