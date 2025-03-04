@@ -68,7 +68,8 @@ void scan(int requests[], int n, int head, int disk_size, int direction) {
 void c_scan(int requests[], int n, int head, int disk_size) {
     int total_movement = 0, pos = 0;
     int sorted[n];
-    for (int i = 0; i < n; i++) sorted[i] = requests[i];
+    for (int i = 0; i < n; i++) 
+        sorted[i] = requests[i];
     sorted[n++] = head;
     sorted[n++] = 0;
     sorted[n++] = disk_size - 1;
@@ -110,9 +111,8 @@ int main() {
     scanf("%d", &n);
     int requests[n];
     printf("Enter the requests: ");
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) 
         scanf("%d", &requests[i]);
-    }
     printf("Enter the initial head position: ");
     scanf("%d", &head);
     printf("Enter the disk size: ");
