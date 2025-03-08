@@ -21,7 +21,7 @@ int main() {
         if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
             continue;
         }
-        if (stat(entry->d_name, &filestat) == -1) {
+        if (stat(entry->d_name, &fileStat) == -1) {
             perror("stat failed");
             continue;
         }
