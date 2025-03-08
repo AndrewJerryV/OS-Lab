@@ -7,12 +7,14 @@ int main() {
     int fd = open("example.txt", O_CREAT | O_RDWR, 0644);
     if (fd < 0) return 1;
 
-    write(fd, "Hello, this is a sample text.", 29);
-    lseek(fd, 0, SEEK_SET);
+	char* text = "Hello, this is a sample text.";
+	write(fd, text, strlen(text));
 
-    char buffer[30];
-    read(fd, buffer, 29);
-    buffer[29] = '\0';
+    lseek(fd, 0, SEEK_SET);
+	
+    char buffer[100];
+    read(fd, buffer, sizeof(buffer)-1);
+    buffer[100] = '\0';
     printf("%s\n", buffer);
 
     close(fd);
