@@ -21,6 +21,10 @@ int main() {
         if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
             continue;
         }
+        if (stat(entry->d_name, &filestat) == -1) {
+            perror("stat failed");
+            continue;
+        }
         printf("Name: %s\n", entry->d_name);
         printf("Size: %ld bytes\n", fileStat.st_size);
         printf("Permissions: %o\n", fileStat.st_mode & 0777);
