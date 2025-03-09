@@ -56,11 +56,9 @@ int main() {
             if (isProcess1) {
                 strcpy(sharedBuffer->message1, message);
                 sharedBuffer->dataStatus1 = 1;
-                fflush(stdout);
             } else {
                 strcpy(sharedBuffer->message2, message);
                 sharedBuffer->dataStatus2 = 1;
-                fflush(stdout);
             }
     
             if (strcmp(message, "STOP") == 0) 
