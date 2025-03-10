@@ -1,4 +1,10 @@
 #!/bin/bash
+
+if [[ $# -ne 2 ]]; then
+    echo "Two positive numbers are required"
+    exit 1
+fi
+
 start=$1
 end=$2
 
