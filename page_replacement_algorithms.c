@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <limits.h>
 #include <stdbool.h>
 
 void displayFrames(int frame[], int frames) {
@@ -50,7 +49,7 @@ void lru(int pages[], int n, int frames) {
             }
         }
         if (!found) {
-            int lru_index = 0, min = INT_MAX;
+            int lru_index = 0, min = 1e9;
             for (int j = 0; j < frames; j++) {
                 if (frame[j] == -1) {
                     lru_index = j;
@@ -90,7 +89,7 @@ void lfu(int pages[], int n, int frames) {
             }
         }
         if (!found) {
-            int lfu_index = -1, min_freq = INT_MAX, oldest = INT_MAX;
+            int lfu_index = -1, min_freq = 1e9, oldest = 1e9;
             for (int j = 0; j < frames; j++) {
                 if (frame[j] == -1) {
                     lfu_index = j;
