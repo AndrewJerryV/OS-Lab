@@ -53,8 +53,6 @@ int main() {
     for (int j = 0; j < numResources; j++) work[j] = available[j];
     for (int i = 0; i < numProcesses; i++) finish[i] = false;
 
-    int count = 0;
-
     while (count < numProcesses) {
         bool found = false;
         for (int i = 0; i < numProcesses; i++) {
