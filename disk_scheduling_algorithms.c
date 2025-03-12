@@ -105,6 +105,29 @@ void c_scan(int requests[], int n, int head, int disk_size) {
     printf("Total Head Movement (C-SCAN): %d\n", total_movement);
 }
 
+void sstf(int requests[], int n, int head) {
+    int total_movement = 0;
+    int visited[n];
+    for (int i = 0; i < n; i++) 
+        visited[i] = 0;
+
+    printf("\nSSTF Disk Scheduling Steps:\n");
+    for (int i = 0; i < n; i++) {
+        int min_seek = 1e9, min_index = -1;
+        for (int j = 0; j < n; j++) {
+            if (!visited[j] && abs(requests[j] - head) < min_seek) {
+                min_seek = abs(requests[j] - head);
+                min_index = j;
+            }
+        }
+        visited[min_index] = 1;
+        printf("Head moves from %d to %d, movement = %d\n", head, requests[min_index], min_seek);
+        total_movement += min_seek;
+        head = requests[min_index];
+    }
+    printf("Total Head Movement (SSTF): %d\n", total_movement);
+}
+
 int main() {
     int n, head, disk_size, direction;
     printf("Enter the number of disk requests: ");
@@ -123,6 +146,7 @@ int main() {
     fcfs(requests, n, head);
     scan(requests, n, head, disk_size, direction);
     c_scan(requests, n, head, disk_size);
+	sstf(requests, n, head);
     
     return 0;
 }
