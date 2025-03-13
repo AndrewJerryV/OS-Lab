@@ -1,21 +1,31 @@
 #include <stdio.h>
 
 void firstFit(int blockSize[], int m, int processSize[], int n) {
-    int allocation[n]; 
-
+    int allocation[n], internalFragmentation = 0, externalFragmentation = 0;
+    int blockAllocated[m];
+    for (int j = 0; j < m; j++) 
+        blockAllocated[j] = 0;
+    
     for (int i = 0; i < n; i++)
-        allocation[i] = -1; 
-
+        allocation[i] = -1;
+    
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
-            if (blockSize[j] >= processSize[i]) { 
+            if (blockSize[j] >= processSize[i]) {
                 allocation[i] = j;
-                blockSize[j] -= processSize[i]; 
+                blockAllocated[j] = 1;  
+                blockSize[j] -= processSize[i];
                 break;
             }
         }
     }
 
+    for(int i = 0; i < m; i++) {
+        if (blockAllocated[i]) 
+            internalFragmentation += blockSize[i];
+        else
+            externalFragmentation += blockSize[i];
+    }
     printf("\nFirst Fit Allocation:\n");
     printf("Process No\tProcess Size\tBlock No\n");
     for (int i = 0; i < n; i++) {
@@ -26,13 +36,18 @@ void firstFit(int blockSize[], int m, int processSize[], int n) {
             printf("Not Allocated");
         printf("\n");
     }
+    printf("Internal Fragmentation: %d\n", internalFragmentation);
+    printf("External Fragmentation: %d\n", externalFragmentation);
 }
 
 void bestFit(int blockSize[], int m, int processSize[], int n) {
-    int allocation[n];
+    int allocation[n], internalFragmentation = 0, externalFragmentation = 0;
+    int blockAllocated[m];
+    for (int j = 0; j < m; j++) 
+        blockAllocated[j] = 0;
 
     for (int i = 0; i < n; i++)
-        allocation[i] = -1; 
+        allocation[i] = -1;
 
     for (int i = 0; i < n; i++) {
         int bestIdx = -1;
@@ -44,10 +59,16 @@ void bestFit(int blockSize[], int m, int processSize[], int n) {
         }
         if (bestIdx != -1) {
             allocation[i] = bestIdx;
+            blockAllocated[bestIdx] = 1;  
             blockSize[bestIdx] -= processSize[i];
         }
     }
-
+    for(int i = 0; i < m; i++) {
+        if (blockAllocated[i]) 
+            internalFragmentation += blockSize[i];
+        else
+            externalFragmentation += blockSize[i];
+    }
     printf("\nBest Fit Allocation:\n");
     printf("Process No\tProcess Size\tBlock No\n");
     for (int i = 0; i < n; i++) {
@@ -58,13 +79,18 @@ void bestFit(int blockSize[], int m, int processSize[], int n) {
             printf("Not Allocated");
         printf("\n");
     }
+    printf("Internal Fragmentation: %d\n", internalFragmentation);
+    printf("External Fragmentation: %d\n", externalFragmentation);
 }
 
 void worstFit(int blockSize[], int m, int processSize[], int n) {
-    int allocation[n];
+    int allocation[n], internalFragmentation = 0, externalFragmentation = 0;
+    int blockAllocated[m];
+    for (int j = 0; j < m; j++) 
+        blockAllocated[j] = 0;
 
     for (int i = 0; i < n; i++)
-        allocation[i] = -1; 
+        allocation[i] = -1;
 
     for (int i = 0; i < n; i++) {
         int worstIdx = -1;
@@ -76,10 +102,16 @@ void worstFit(int blockSize[], int m, int processSize[], int n) {
         }
         if (worstIdx != -1) {
             allocation[i] = worstIdx;
+            blockAllocated[worstIdx] = 1;  
             blockSize[worstIdx] -= processSize[i];
         }
     }
-
+    for(int i = 0; i < m; i++) {
+        if (blockAllocated[i]) 
+            internalFragmentation += blockSize[i];
+        else
+            externalFragmentation += blockSize[i];
+    }
     printf("\nWorst Fit Allocation:\n");
     printf("Process No\tProcess Size\tBlock No\n");
     for (int i = 0; i < n; i++) {
@@ -90,6 +122,15 @@ void worstFit(int blockSize[], int m, int processSize[], int n) {
             printf("Not Allocated");
         printf("\n");
     }
+    printf("Internal Fragmentation: %d\n", internalFragmentation);
+    printf("External Fragmentation: %d\n", externalFragmentation);
+}
+
+int calculateExternalFragmentation(int blockSize[], int m) {
+    int totalFreeMemory = 0;
+    for (int i = 0; i < m; i++)
+        totalFreeMemory += blockSize[i];
+    return totalFreeMemory;
 }
 
 int main() {
