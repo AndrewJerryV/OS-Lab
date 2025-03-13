@@ -126,13 +126,6 @@ void worstFit(int blockSize[], int m, int processSize[], int n) {
     printf("External Fragmentation: %d\n", externalFragmentation);
 }
 
-int calculateExternalFragmentation(int blockSize[], int m) {
-    int totalFreeMemory = 0;
-    for (int i = 0; i < m; i++)
-        totalFreeMemory += blockSize[i];
-    return totalFreeMemory;
-}
-
 int main() {
     int m, n;
 
