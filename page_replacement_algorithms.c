@@ -151,7 +151,7 @@ void mfu(int pages[], int n, int frames) {
             freq[mfu_index] = 1;     
             page_faults++;
         }
-        displayframes(frame, frames);
+        displayFrames(frame, frames);
     }
     printf("Total MFU Page Faults: %d\n", page_faults);
 }
@@ -197,7 +197,7 @@ void optimal(int pages[], int n, int frames) {
             frame[pos] = pages[i];
             page_faults++;
         }
-        displayframes(frame, frames);
+        displayFrames(frame, frames);
     }
     printf("Total Optimal Page Faults: %d\n", page_faults);
 }
