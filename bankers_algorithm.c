@@ -84,12 +84,10 @@ int main() {
 
     if (count == numProcesses) {
         printf("\nSystem is in a SAFE state.\nSafe sequence: ");
-        for (int i = 0; i < numProcesses; i++) {
+        for (int i = 0; i < numProcesses; i++) 
             printf("P%d ", safeSequence[i]);
-        }
         printf("\n");
-    } else {
+    } else 
         printf("\nSystem is in an UNSAFE state! No safe sequence exists.\n");
-    }
     return 0;
 }
