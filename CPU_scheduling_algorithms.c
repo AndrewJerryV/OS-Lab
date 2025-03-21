@@ -72,9 +72,9 @@ void calculateSJFTimes(Process p[], int n) {
             }
         }
 
-        if (next == -1) {
+        if (next == -1) 
             current_time++;
-        } else {
+        else {
             gantt[ganttCount].start = current_time;
             gantt[ganttCount].pid = p[next].pid;
 
@@ -107,18 +107,16 @@ void calculateRRTimes(Process p[], int n, int time_quantum) {
     }
 
     for (int i = 0; i < n; i++) {
-        if (p[i].arrival_time <= current_time) {
+        if (p[i].arrival_time <= current_time) 
             queue[rear++] = i;
-        }
     }
 
     while (completed < n) {
         if (front == rear) {
             current_time++;
             for (int i = 0; i < n; i++) {
-                if (p[i].arrival_time == current_time && p[i].remaining_time > 0) {
+                if (p[i].arrival_time == current_time && p[i].remaining_time > 0) 
                     queue[rear++] = i;
-                }
             }
             continue;
         }
@@ -142,9 +140,8 @@ void calculateRRTimes(Process p[], int n, int time_quantum) {
         (ganttCount)++;
 
         for (int i = 0; i < n; i++) {
-            if (p[i].arrival_time > gantt[ganttCount - 1].start && p[i].arrival_time <= current_time && p[i].remaining_time > 0) {
+            if (p[i].arrival_time > gantt[ganttCount - 1].start && p[i].arrival_time <= current_time && p[i].remaining_time > 0) 
                 queue[rear++] = i;
-            }
         }
 
         if (proc->remaining_time == 0) {
@@ -152,9 +149,8 @@ void calculateRRTimes(Process p[], int n, int time_quantum) {
             proc->turnaround_time = proc->completion_time - proc->arrival_time;
             proc->waiting_time = proc->turnaround_time - proc->burst_time;
             completed++;
-        } else {
+        } else 
             queue[rear++] = idx;
-        }
     }
     printGanttChart(gantt, ganttCount);
 }
@@ -176,9 +172,9 @@ void calculatePSTimes(Process p[], int n) {
             }
         }
 
-        if (next == -1) {
+        if (next == -1) 
             current_time++;
-        } else {
+        else {
             gantt[ganttCount].start = current_time;
             gantt[ganttCount].pid = p[next].pid;
 
