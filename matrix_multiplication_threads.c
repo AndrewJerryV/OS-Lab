@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
-#include <sys/mman.h>
-#include <fcntl.h>
-#include <unistd.h>
 
 #define N 4
 
