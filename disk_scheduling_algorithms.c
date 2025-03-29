@@ -146,7 +146,7 @@ int main() {
     fcfs(requests, n, head);
     scan(requests, n, head, disk_size, direction);
     c_scan(requests, n, head, disk_size);
-	sstf(requests, n, head);
+    sstf(requests, n, head);
     
     return 0;
 }
