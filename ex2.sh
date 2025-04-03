@@ -42,6 +42,9 @@ do
         6)
             break
             ;;
+        *)
+            echo "Invalid choice!"
+            ;;
     esac
     echo ""
 done
