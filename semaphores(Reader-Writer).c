@@ -41,12 +41,7 @@ void *reader(void *arg) {
 void *writer(void *arg) {
     for (int i = 0;; i++) {
         int item = i + 1;
-
-        sem_wait(&queue);
         sem_wait(&rw_mutex); 
-
-        sem_post(&queue);
-
         shared_data = item;
         printf("Writer wrote: %d\n", item);
         sem_post(&rw_mutex); 
