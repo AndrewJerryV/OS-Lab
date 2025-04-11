@@ -59,7 +59,6 @@ int main() {
         }
     }
 
-    // Cleanup
     munmap(sharedBuffer, sizeof(SHARED_AREA));
     close(fd);
     shm_unlink(NAME);
