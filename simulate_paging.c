@@ -34,9 +34,9 @@ int main() {
 
     if (num_pages <= num_frames) {
         int *frames = (int *)malloc(num_frames * sizeof(int));
-        for (int i = 0; i < num_frames; i++) {
+        for (int i = 0; i < num_frames; i++) 
             frames[i] = i;
-        }
+        
         shuffle(frames, num_frames);
         for (int i = 0; i < num_pages; i++) {
             page_table[i].valid = 1;
